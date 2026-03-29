@@ -1,0 +1,66 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ── Players ────────────────────────────────────────────────────────────────
+    // Anyone can create (onboarding, no Firebase Auth).
+    // Anyone can read (duplicate name+icon check, leaderboard avatars).
+    // Merge-updates allowed: the merged result must still pass isValidPlayer.
+    //   This covers trackLogin() which only writes { lastActiveAt }.
+    match /players/{playerId} {
+      allow read:   if true;
+      allow create: if isValidPlayer(request.resource.data);
+      allow update: if isValidPlayer(request.resource.data)
+                    && request.resource.data.playerId == playerId;
+    }
+
+    // ── Games ──────────────────────────────────────────────────────────────────
+    // One document per completed game session.
+    // Anyone can create (fire-and-forget from Results page).
+    // Anyone can read (analytics / admin dashboard).
+    // Updates are restricted to the share fields only — prevents score tampering.
+    match /games/{gameId} {
+      allow read:   if true;
+      allow create: if isValidGame(request.resource.data);
+      allow update: if request.resource.data.diff(resource.data)
+                         .affectedKeys()
+                         .hasOnly(['shared', 'sharedAt', 'sharedVia']);
+    }
+
+    // ── Leaderboards ───────────────────────────────────────────────────────────
+    // One document per difficulty: /leaderboards/easy, /leaderboards/medium, /leaderboards/hard.
+    // Anyone can read (public ranking shown to all players).
+    // Anyone can write (scores saved via client-side transaction).
+    //   Validation: only valid difficulty keys, scores array ≤ 10 entries.
+    match /leaderboards/{difficulty} {
+      allow read: if true;
+      allow write: if difficulty in ['easy', 'medium', 'hard']
+                   && isValidLeaderboard(request.resource.data);
+    }
+
+    // ── Helpers ────────────────────────────────────────────────────────────────
+
+    function isValidPlayer(data) {
+      return data.keys().hasAll(['playerId', 'name', 'iconKey', 'createdAt'])
+          && data.playerId is string && data.playerId.size() > 0
+          && data.name     is string && data.name.size()     > 0 && data.name.size() <= 40
+          && data.iconKey  is string && data.iconKey.size()  > 0
+          && data.createdAt is string;
+    }
+
+    function isValidGame(data) {
+      return data.keys().hasAll(['playerId', 'difficulty', 'outcome', 'completedAt'])
+          && data.playerId    is string && data.playerId.size() > 0
+          && data.difficulty  in ['easy', 'medium', 'hard']
+          && data.outcome     in ['win', 'lose']
+          && data.completedAt is string;
+    }
+
+    function isValidLeaderboard(data) {
+      return data.keys().hasAll(['scores'])
+          && data.scores is list
+          && data.scores.size() <= 10;
+    }
+  }
+}
