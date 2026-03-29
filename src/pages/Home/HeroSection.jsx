@@ -25,7 +25,7 @@ export function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 h-full min-h-[inherit] flex items-end md:items-center">
-        <div className="w-full max-w-4xl mx-auto px-6 pb-16 md:pb-0 md:py-12">
+        <div className="w-full max-w-4xl mx-auto px-6 pb-16 md:pb-0">
           {/* Logo — above headline */}
           <img
             src="/images/logo.svg"
