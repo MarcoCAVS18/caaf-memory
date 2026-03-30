@@ -7,7 +7,7 @@ export function Footer() {
   const { t } = useTranslation()
 
   return (
-    <footer className="py-6 px-6 text-center border-t border-[var(--color-outline-variant)]/10">
+    <footer className="pt-6 pb-32 px-6 text-center border-t border-[var(--color-outline-variant)]/10">
       <div className="max-w-4xl mx-auto flex flex-col items-center gap-6">
 
         {/* Brand */}
