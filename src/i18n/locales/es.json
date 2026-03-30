@@ -3,144 +3,152 @@
     "title": "CAAF Memory"
   },
   "nav": {
-    "fields":  "Campos",
-    "trophy":  "Trofeos",
-    "about":   "Nosotros"
+    "fields": "Campos",
+    "trophy": "Trofeos",
+    "about": "Nosotros"
   },
   "onboarding": {
-    "badge":           "Bienvenido al campo",
-    "title":           "¿Cómo te\nllamamos?",
-    "subtitle":        "Elige un nombre e ícono para tu perfil de cosecha.",
-    "nameLabel":       "Tu nombre",
+    "badge": "Bienvenido al campo",
+    "title": "¿Cómo te\nllamamos?",
+    "subtitle": "Elige un nombre e ícono para tu perfil de cosecha.",
+    "nameLabel": "Tu nombre",
     "namePlaceholder": "ej. Marco",
-    "iconLabel":       "Tu icono",
-    "nameRequired":    "Ingresa tu nombre para continuar.",
-    "submit":          "Comenzar a cosechar",
-    "saving":          "Guardando…",
-    "checking":        "Verificando…",
-    "nameTaken":       "Ya existe un {{name}} con este icono en el juego.",
-    "nameTakenHint":   "Prueba con un apodo (ej. {{name}} C.) o elige otro icono."
+    "iconLabel": "Tu icono",
+    "nameRequired": "Ingresa tu nombre para continuar.",
+    "submit": "Comenzar a cosechar",
+    "saving": "Guardando…",
+    "checking": "Verificando…",
+    "nameTaken": "Ya existe un {{name}} con este icono en el juego.",
+    "nameTakenHint": "Prueba con un apodo (ej. {{name}} C.) o elige otro icono."
   },
   "home": {
-    "badge":    "Congreso CAAF 2026",
+    "badge": "Congreso CAAF 2026",
     "headline": "JUNTOS EN",
-    "accent":   "EL CAMPO.",
-    "subline":  "Un juego de memoria para celebrar la historia y el trabajo de la Cooperativa Agropecuaria de Acopiadores Federados.",
-    "cta":      "Iniciar Juego",
-    "explore":  "Explorar Archivo",
+    "accent": "EL CAMPO.",
+    "subline": "Un juego de memoria para celebrar la historia y el trabajo de la Cooperativa Agropecuaria de Acopiadores Federados.",
+    "cta": "Iniciar Juego",
+    "explore": "Explorar Archivo",
     "features": {
-      "cognitiveTitle":   "Agricultura Cognitiva",
-      "cognitiveDesc":    "Sincroniza tus ritmos biológicos con los ciclos estacionales de los Campos de Memoria.",
-      "efficiency":       "Eficiencia de Campo 34%",
-      "siloTitle":        "El Granero Dorado",
-      "siloDesc":         "Colecciona artefactos ancestrales y alcanza la excelencia agraria.",
-      "viewTrophies":     "Ver Trofeos",
-      "soilLabel":        "Salud del Suelo",
-      "soilValue":        "Exuberante y Fértil",
-      "atmosphereLabel":  "Atmósfera",
-      "atmosphereValue":  "Horizonte Despejado",
-      "hydrationLabel":   "Hidratación",
-      "hydrationValue":   "Flujo Óptimo",
+      "cognitiveTitle": "Agricultura Cognitiva",
+      "cognitiveDesc": "Sincroniza tus ritmos biológicos con los ciclos estacionales de los Campos de Memoria.",
+      "efficiency": "Eficiencia de Campo 34%",
+      "siloTitle": "El Granero Dorado",
+      "siloDesc": "Colecciona artefactos ancestrales y alcanza la excelencia agraria.",
+      "viewTrophies": "Ver Trofeos",
+      "soilLabel": "Salud del Suelo",
+      "soilValue": "Exuberante y Fértil",
+      "atmosphereLabel": "Atmósfera",
+      "atmosphereValue": "Horizonte Despejado",
+      "hydrationLabel": "Hidratación",
+      "hydrationValue": "Flujo Óptimo",
       "productsLabel": "Cooperativa Agropecuaria de Acopiadores Federados",
       "productsTitle": "Nuestros Productos",
-      "productsLink":  "Ver catálogo",
-      "efficiencyPct":    "Eficiencia de Campo {{pct}}%",
-      "cognitiveTitle1":  "Campos en Crecimiento",
-      "cognitiveDesc1":   "Tus primeras cosechas comienzan a dar fruto. El suelo empieza a recordar.",
-      "cognitiveTitle2":  "Leyenda Cultivada",
-      "cognitiveDesc2":   "Has alcanzado la cima. El legado de tus cosechas resuena en todos los campos.",
-      "noMedalsYet":      "Juega partidas para desbloquear tu primera medalla",
-      "andMore":          "+{{count}} más"
+      "productsLink": "Ver catálogo",
+      "efficiencyPct": "Eficiencia de Campo {{pct}}%",
+      "cognitiveTitle1": "Campos en Crecimiento",
+      "cognitiveDesc1": "Tus primeras cosechas comienzan a dar fruto. El suelo empieza a recordar.",
+      "cognitiveTitle2": "Leyenda Cultivada",
+      "cognitiveDesc2": "Has alcanzado la cima. El legado de tus cosechas resuena en todos los campos.",
+      "noMedalsYet": "Juega partidas para desbloquear tu primera medalla",
+      "andMore": "+{{count}} más"
     },
     "footer": {
       "gameSubtitle": "Juego interactivo para CAAF",
-      "privacy":      "Privacidad",
-      "community":    "Cooperativa",
-      "portfolio":    "Otros Proyectos",
-      "copyright":    "2026 desarrollado por Marqui :). Todos los derechos cultivados."
+      "privacy": "Privacidad",
+      "community": "Cooperativa",
+      "portfolio": "Otros Proyectos",
+      "copyright": "2026 desarrollado por Marqui :). Todos los derechos cultivados."
     }
   },
   "difficulty": {
-    "badge":    "CAAF Memory",
-    "title":    "Elige el nivel",
+    "badge": "CAAF Memory",
+    "title": "Elige el nivel",
     "subtitle": "Seleccioná la dificultad y poné a prueba tu memoria.",
     "easy": {
-      "label":       "Fácil",
+      "label": "Fácil",
       "description": "Grilla pequeña y tiempo generoso. Ideal para empezar.",
-      "cta":         "Jugar"
+      "cta": "Jugar"
     },
     "medium": {
-      "label":       "Medio",
+      "label": "Medio",
       "description": "El reto estándar. Más pares y tiempo acotado.",
-      "cta":         "Jugar",
+      "cta": "Jugar",
       "recommended": "Recomendado"
     },
     "hard": {
-      "label":       "Difícil",
+      "label": "Difícil",
       "description": "Grilla grande y pocos intentos. Solo para expertos.",
-      "cta":         "Jugar"
+      "cta": "Jugar"
     },
-    "grid":             "Cuadrícula {{size}}",
-    "timeExtensive":    "Tiempo generoso",
-    "timeModerate":     "Tiempo moderado",
-    "timeLimit60":      "1 minuto límite",
+    "grid": "Cuadrícula {{size}}",
+    "timeExtensive": "Tiempo generoso",
+    "timeModerate": "Tiempo moderado",
+    "timeLimit60": "1 minuto límite",
     "attemptsInfinite": "Intentos ilimitados",
-    "attemptsTen":      "10 intentos",
-    "statsWins":    "Victorias",
-    "statsPlayed":  "Partidas",
-    "statsHard":    "Difícil"
+    "attemptsTen": "10 intentos",
+    "statsWins": "Victorias",
+    "statsPlayed": "Partidas",
+    "statsHard": "Difícil",
+    "continue": "Continuar",
+    "savedBadge": "En progreso"
   },
   "game": {
-    "timeElapsed":       "Tiempo Transcurrido",
-    "timeLeft":          "Tiempo Restante",
+    "timeElapsed": "Tiempo Transcurrido",
+    "timeLeft": "Tiempo Restante",
     "remainingAttempts": "Intentos Restantes",
-    "hint":              "Empareja todos los bloques de suelo fértil para completar la cosecha.",
-    "level":             "Nivel",
-    "trophy":            "Trofeo"
+    "hint": "Empareja todos los bloques de suelo fértil para completar la cosecha.",
+    "level": "Nivel",
+    "trophy": "Trofeo",
+    "exit": {
+      "title": "¿Abandonás la partida?",
+      "message": "Tu progreso se guardará. Podés continuar desde donde dejaste.",
+      "confirm": "Abandonar",
+      "cancel": "Seguir jugando"
+    }
   },
   "results": {
     "win": {
-      "badge":    "Cosecha Exitosa",
-      "title":    "Cosecha Completa",
+      "badge": "Cosecha Exitosa",
+      "title": "Cosecha Completa",
       "subtitle": "Tu memoria ha nutrido el suelo.",
-      "cta":      "Jugar de Nuevo"
+      "cta": "Jugar de Nuevo"
     },
     "lose": {
-      "badge":    "Ciclo Terminado",
-      "title":    "Cosecha Fallida",
+      "badge": "Ciclo Terminado",
+      "title": "Cosecha Fallida",
       "subtitle": "La helada se llevó los recuerdos antes de la cosecha.",
-      "cta":      "Reintentar Cosecha",
-      "back":     "Volver a los Campos"
+      "cta": "Reintentar Cosecha",
+      "back": "Volver a los Campos"
     },
-    "timeElapsed":    "Tiempo",
+    "timeElapsed": "Tiempo",
     "failedAttempts": "Errores",
-    "score":          "Puntuación",
+    "score": "Puntuación",
     "share": {
-      "cta":       "Compartir Resultado",
+      "cta": "Compartir Resultado",
       "preparing": "Preparando…"
     }
   },
   "leaderboard": {
-    "badge":      "Salón de Trofeos",
-    "title":      "Rankings",
-    "subtitle":   "Los 10 mejores cosechadores en todos los niveles.",
-    "empty":      "Aún no hay cosechas registradas. ¡Sé el primero!",
-    "loading":    "Cargando rankings…",
-    "you":        "Tú",
+    "badge": "Salón de Trofeos",
+    "title": "Rankings",
+    "subtitle": "Los 10 mejores cosechadores en todos los niveles.",
+    "empty": "Aún no hay cosechas registradas. ¡Sé el primero!",
+    "loading": "Cargando rankings…",
+    "you": "Tú",
     "pointsUnit": "pts",
     "tabs": {
-      "easy":   "Fácil",
+      "easy": "Fácil",
       "medium": "Medio",
-      "hard":   "Difícil"
+      "hard": "Difícil"
     }
   },
   "about": {
-    "badge":           "CAAF",
-    "title":           "Nosotros",
-    "subtitle":        "Cooperativa Agropecuaria de Acopiadores Federados Limitada",
-    "whoTitle":        "¿Quiénes Somos?",
-    "whoBody":         "La Cooperativa Agropecuaria de Acopiadores Federados Limitada agrupa la voluntad de empresas acopiadoras de cereales y oleaginosas, quienes a través del asociativismo potencian su participación comercial. El objetivo principal es aumentar la rentabilidad y competitividad de sus asociados, brindándoles un servicio integral en todas las etapas de comercialización. La acción conjunta dentro de un marco organizado con estructura propia, permite por medio de distintas estrategias, alcanzar dichos objetivos.",
-    "benefitsTitle":   "Beneficios",
+    "badge": "CAAF",
+    "title": "Nosotros",
+    "subtitle": "Cooperativa Agropecuaria de Acopiadores Federados Limitada",
+    "whoTitle": "¿Quiénes Somos?",
+    "whoBody": "La Cooperativa Agropecuaria de Acopiadores Federados Limitada agrupa la voluntad de empresas acopiadoras de cereales y oleaginosas, quienes a través del asociativismo potencian su participación comercial. El objetivo principal es aumentar la rentabilidad y competitividad de sus asociados, brindándoles un servicio integral en todas las etapas de comercialización. La acción conjunta dentro de un marco organizado con estructura propia, permite por medio de distintas estrategias, alcanzar dichos objetivos.",
+    "benefitsTitle": "Beneficios",
     "benefits": [
       "A mayor escala, mayor poder de negociación frente a los proveedores.",
       "Generación de estructuras de integración vertical, con costos acotados por escala.",
@@ -151,15 +159,15 @@
       "Disminuir costos de gestión y logística.",
       "Generación y ampliación de redes comerciales entre asociados de distintas regiones."
     ],
-    "servicesBadge":   "Servicios",
-    "servicesTitle":   "Nuestros Servicios",
-    "servicesBody":    "Servicios de asesoramiento, capacitación, inscripciones, cursos y programas de sistemas de gestión de la calidad nacionales e internacionales certificables y normativas vigentes aplicables. Transporte, inscripciones, cotizaciones.",
-    "memoryBadge":     "CAAF Memory",
-    "memoryTitle":     "CAAF Memory",
-    "memoryBody":      "Una experiencia lúdica diseñada para conectar a los asociados con los valores de la cooperativa. Entrená tu memoria mientras explorás el universo CAAF."
+    "servicesBadge": "Servicios",
+    "servicesTitle": "Nuestros Servicios",
+    "servicesBody": "Servicios de asesoramiento, capacitación, inscripciones, cursos y programas de sistemas de gestión de la calidad nacionales e internacionales certificables y normativas vigentes aplicables. Transporte, inscripciones, cotizaciones.",
+    "memoryBadge": "CAAF Memory",
+    "memoryTitle": "CAAF Memory",
+    "memoryBody": "Una experiencia lúdica diseñada para conectar a los asociados con los valores de la cooperativa. Entrená tu memoria mientras explorás el universo CAAF."
   },
   "achievements": {
-    "sectionTitle":    "Tus Medallas",
+    "sectionTitle": "Tus Medallas",
     "sectionSubtitle": "Desbloquea medallas alcanzando hitos en tus cosechas.",
     "locked": "Bloqueada",
     "toast": {
@@ -197,26 +205,26 @@
     }
   },
   "privacy": {
-    "badge":    "Privacidad",
-    "title":    "Política de Privacidad",
+    "badge": "Privacidad",
+    "title": "Política de Privacidad",
     "subtitle": "CAAF Memory no requiere datos personales para funcionar. Acá explicamos qué información guardamos y por qué.",
-    "back":     "Volver",
+    "back": "Volver",
     "sections": {
       "noPersonal": {
         "title": "Sin datos personales",
-        "body":  "No pedimos email, teléfono, dirección ni ningún dato de identificación personal. El único dato que ingresás es un nombre o apodo de tu elección y un ícono representativo, ambos visibles públicamente en el ranking."
+        "body": "No pedimos email, teléfono, dirección ni ningún dato de identificación personal. El único dato que ingresás es un nombre o apodo de tu elección y un ícono representativo, ambos visibles públicamente en el ranking."
       },
       "collected": {
         "title": "Qué guardamos",
-        "body":  "Guardamos tu nombre de juego, ícono elegido, puntajes y estadísticas de partidas (tiempo, errores, dificultad, resultado). También registramos la fecha de tu última sesión y si compartiste un resultado. Esta información se almacena en Firebase Firestore asociada a un identificador anónimo generado por el dispositivo."
+        "body": "Guardamos tu nombre de juego, ícono elegido, puntajes y estadísticas de partidas (tiempo, errores, dificultad, resultado). También registramos la fecha de tu última sesión y si compartiste un resultado. Esta información se almacena en Firebase Firestore asociada a un identificador anónimo generado por el dispositivo."
       },
       "purpose": {
         "title": "Para qué usamos los datos",
-        "body":  "Los datos se usan exclusivamente para mostrar el ranking entre participantes del congreso CAAF y para que el equipo organizador pueda ver estadísticas de participación. No se comparten con terceros ni se usan con fines publicitarios."
+        "body": "Los datos se usan exclusivamente para mostrar el ranking entre participantes del congreso CAAF y para que el equipo organizador pueda ver estadísticas de participación. No se comparten con terceros ni se usan con fines publicitarios."
       },
       "deletion": {
         "title": "Eliminación de datos",
-        "body":  "Podés cerrar sesión desde Ajustes en cualquier momento. Esto borra tu perfil del dispositivo. Si querés eliminar tus datos del servidor, contactá al equipo organizador del congreso."
+        "body": "Podés cerrar sesión desde Ajustes en cualquier momento. Esto borra tu perfil del dispositivo. Si querés eliminar tus datos del servidor, contactá al equipo organizador del congreso."
       }
     },
     "footerNote": "CAAF Memory es una experiencia diseñada para el congreso de la Cooperativa Agropecuaria de Acopiadores Federados Limitada. Los datos recopilados tienen vigencia exclusiva durante el evento."
@@ -224,25 +232,25 @@
   "settings": {
     "title": "Ajustes",
     "language": {
-      "title":    "Idioma",
+      "title": "Idioma",
       "subtitle": "Elige el idioma de la aplicación"
     },
     "theme": {
-      "title":    "Apariencia",
+      "title": "Apariencia",
       "subtitle": "Selecciona tu modo visual preferido",
-      "dark":     "Oscuro",
-      "light":    "Claro",
-      "system":   "Sistema"
+      "dark": "Oscuro",
+      "light": "Claro",
+      "system": "Sistema"
     },
     "profile": {
-      "title":         "Tu Perfil",
-      "subtitle":      "Sesión activa en este dispositivo.",
+      "title": "Tu Perfil",
+      "subtitle": "Sesión activa en este dispositivo.",
       "activeSession": "Sesión activa",
-      "logout":        "Cerrar sesión"
+      "logout": "Cerrar sesión"
     },
     "share": {
-      "title":     "Compartir App",
-      "subtitle":  "Otros pueden escanear esto para unirse al juego",
+      "title": "Compartir App",
+      "subtitle": "Otros pueden escanear esto para unirse al juego",
       "scanLabel": "Escanear para jugar"
     }
   }

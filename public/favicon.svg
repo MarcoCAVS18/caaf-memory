@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512">
+  <!-- Background: rounded square in the app's primary container green -->
+  <rect width="512" height="512" rx="112" fill="#28360e"/>
+  <!-- Isologo rendered white via invert filter, then tinted to the characteristic green -->
+  <image
+    href="/images/isologo.svg"
+    x="56" y="56" width="400" height="400"
+    style="filter: brightness(0) invert(1) sepia(1) saturate(1.5) hue-rotate(45deg) brightness(0.92)"
+  />
+</svg>

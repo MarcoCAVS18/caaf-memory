@@ -39,6 +39,16 @@ service cloud.firestore {
                    && isValidLeaderboard(request.resource.data);
     }
 
+    // ── Saved Games ───────────────────────────────────────────────────────────
+    // One document per player: /savedGames/{playerId}.
+    // Anyone can read, write, or delete their own document (matched by document ID).
+    // Validation: must include the required fields with correct types.
+    match /savedGames/{playerId} {
+      allow read:   if true;
+      allow write:  if isValidSavedGame(request.resource.data);
+      allow delete: if true;
+    }
+
     // ── Helpers ────────────────────────────────────────────────────────────────
 
     function isValidPlayer(data) {
@@ -55,6 +65,16 @@ service cloud.firestore {
           && data.difficulty  in ['easy', 'medium', 'hard']
           && data.outcome     in ['win', 'lose']
           && data.completedAt is string;
+    }
+
+    function isValidSavedGame(data) {
+      return data.keys().hasAll(['difficulty', 'cards', 'elapsed', 'failedAttempts', 'matchedPairs', 'savedAt'])
+          && data.difficulty     in ['easy', 'medium', 'hard']
+          && data.cards          is list
+          && data.elapsed        is number
+          && data.failedAttempts is number
+          && data.matchedPairs   is list
+          && data.savedAt        is number;
     }
 
     function isValidLeaderboard(data) {

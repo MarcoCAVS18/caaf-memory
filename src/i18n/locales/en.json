@@ -3,144 +3,152 @@
     "title": "CAAF Memory"
   },
   "nav": {
-    "fields":  "Fields",
-    "trophy":  "Trophy",
-    "about":   "About"
+    "fields": "Fields",
+    "trophy": "Trophy",
+    "about": "About"
   },
   "onboarding": {
-    "badge":           "Welcome to the field",
-    "title":           "What should we\ncall you?",
-    "subtitle":        "Choose a name and icon for your harvest profile.",
-    "nameLabel":       "Your name",
+    "badge": "Welcome to the field",
+    "title": "What should we\ncall you?",
+    "subtitle": "Choose a name and icon for your harvest profile.",
+    "nameLabel": "Your name",
     "namePlaceholder": "e.g. Marco",
-    "iconLabel":       "Your icon",
-    "nameRequired":    "Enter your name to continue.",
-    "submit":          "Start harvesting",
-    "saving":          "Saving…",
-    "checking":        "Checking…",
-    "nameTaken":       "{{name}} with this icon already exists in the game.",
-    "nameTakenHint":   "Try a nickname (e.g. {{name}} C.) or pick a different icon."
+    "iconLabel": "Your icon",
+    "nameRequired": "Enter your name to continue.",
+    "submit": "Start harvesting",
+    "saving": "Saving…",
+    "checking": "Checking…",
+    "nameTaken": "{{name}} with this icon already exists in the game.",
+    "nameTakenHint": "Try a nickname (e.g. {{name}} C.) or pick a different icon."
   },
   "home": {
-    "badge":    "CAAF Congress 2026",
+    "badge": "CAAF Congress 2026",
     "headline": "TOGETHER IN",
-    "accent":   "THE FIELD.",
-    "subline":  "A memory game to celebrate the history and work of the Federados Agricultural Cooperative.",
-    "cta":      "Start Game",
-    "explore":  "Explore Archive",
+    "accent": "THE FIELD.",
+    "subline": "A memory game to celebrate the history and work of the Federados Agricultural Cooperative.",
+    "cta": "Start Game",
+    "explore": "Explore Archive",
     "features": {
-      "cognitiveTitle":   "Cognitive Farming",
-      "cognitiveDesc":    "Sync your biological rhythms with the seasonal cycles of the Memory Fields.",
-      "efficiency":       "Field Efficiency 34%",
-      "siloTitle":        "The Golden Silo",
-      "siloDesc":         "Collect ancestral artifacts and achieve agrarian excellence.",
-      "viewTrophies":     "View Trophies",
-      "soilLabel":        "Soil Health",
-      "soilValue":        "Lush & Fertile",
-      "atmosphereLabel":  "Atmosphere",
-      "atmosphereValue":  "Clear Horizon",
-      "hydrationLabel":   "Hydration",
-      "hydrationValue":   "Optimal Flow",
+      "cognitiveTitle": "Cognitive Farming",
+      "cognitiveDesc": "Sync your biological rhythms with the seasonal cycles of the Memory Fields.",
+      "efficiency": "Field Efficiency 34%",
+      "siloTitle": "The Golden Silo",
+      "siloDesc": "Collect ancestral artifacts and achieve agrarian excellence.",
+      "viewTrophies": "View Trophies",
+      "soilLabel": "Soil Health",
+      "soilValue": "Lush & Fertile",
+      "atmosphereLabel": "Atmosphere",
+      "atmosphereValue": "Clear Horizon",
+      "hydrationLabel": "Hydration",
+      "hydrationValue": "Optimal Flow",
       "productsLabel": "Federados Agricultural Cooperative",
       "productsTitle": "Our Products",
-      "productsLink":  "View catalog",
-      "efficiencyPct":    "Field Efficiency {{pct}}%",
-      "cognitiveTitle1":  "Fields in Growth",
-      "cognitiveDesc1":   "Your first harvests are taking root. The soil is beginning to remember.",
-      "cognitiveTitle2":  "Cultivated Legend",
-      "cognitiveDesc2":   "You have reached the peak. The legacy of your harvests echoes across all fields.",
-      "noMedalsYet":      "Play games to unlock your first medal",
-      "andMore":          "+{{count}} more"
+      "productsLink": "View catalog",
+      "efficiencyPct": "Field Efficiency {{pct}}%",
+      "cognitiveTitle1": "Fields in Growth",
+      "cognitiveDesc1": "Your first harvests are taking root. The soil is beginning to remember.",
+      "cognitiveTitle2": "Cultivated Legend",
+      "cognitiveDesc2": "You have reached the peak. The legacy of your harvests echoes across all fields.",
+      "noMedalsYet": "Play games to unlock your first medal",
+      "andMore": "+{{count}} more"
     },
     "footer": {
       "gameSubtitle": "Interactive game for CAAF",
-      "privacy":      "Privacy",
-      "community":    "Cooperative",
-      "portfolio":    "Other Projects",
-      "copyright":    "2026 developed by Marqui :). All rights cultivated."
+      "privacy": "Privacy",
+      "community": "Cooperative",
+      "portfolio": "Other Projects",
+      "copyright": "2026 developed by Marqui :). All rights cultivated."
     }
   },
   "difficulty": {
-    "badge":    "CAAF Memory",
-    "title":    "Choose level",
+    "badge": "CAAF Memory",
+    "title": "Choose level",
     "subtitle": "Select a difficulty and test your memory.",
     "easy": {
-      "label":       "Easy",
+      "label": "Easy",
       "description": "Small grid and generous time. Perfect for beginners.",
-      "cta":         "Play"
+      "cta": "Play"
     },
     "medium": {
-      "label":       "Medium",
+      "label": "Medium",
       "description": "The standard challenge. More pairs and limited time.",
-      "cta":         "Play",
+      "cta": "Play",
       "recommended": "Recommended"
     },
     "hard": {
-      "label":       "Hard",
+      "label": "Hard",
       "description": "Large grid and few attempts. Experts only.",
-      "cta":         "Play"
+      "cta": "Play"
     },
-    "grid":             "{{size}} Grid",
-    "timeExtensive":    "Generous time",
-    "timeModerate":     "Moderate time",
-    "timeLimit60":      "1 minute limit",
+    "grid": "{{size}} Grid",
+    "timeExtensive": "Generous time",
+    "timeModerate": "Moderate time",
+    "timeLimit60": "1 minute limit",
     "attemptsInfinite": "Unlimited attempts",
-    "attemptsTen":      "10 attempts",
-    "statsWins":    "Wins",
-    "statsPlayed":  "Games",
-    "statsHard":    "Hard"
+    "attemptsTen": "10 attempts",
+    "statsWins": "Wins",
+    "statsPlayed": "Games",
+    "statsHard": "Hard",
+    "continue": "Continue",
+    "savedBadge": "In progress"
   },
   "game": {
-    "timeElapsed":       "Time Elapsed",
-    "timeLeft":          "Time Left",
+    "timeElapsed": "Time Elapsed",
+    "timeLeft": "Time Left",
     "remainingAttempts": "Remaining Attempts",
-    "hint":              "Match all fertile soil blocks to complete the harvest.",
-    "level":             "Level",
-    "trophy":            "Trophy"
+    "hint": "Match all fertile soil blocks to complete the harvest.",
+    "level": "Level",
+    "trophy": "Trophy",
+    "exit": {
+      "title": "Abandon game?",
+      "message": "Your progress will be saved. You can continue from where you left off.",
+      "confirm": "Abandon",
+      "cancel": "Keep playing"
+    }
   },
   "results": {
     "win": {
-      "badge":    "Harvest Success",
-      "title":    "Harvest Complete",
+      "badge": "Harvest Success",
+      "title": "Harvest Complete",
       "subtitle": "Your memory has nourished the soil.",
-      "cta":      "Play Again"
+      "cta": "Play Again"
     },
     "lose": {
-      "badge":    "Cycle Terminated",
-      "title":    "Crop Failed",
+      "badge": "Cycle Terminated",
+      "title": "Crop Failed",
       "subtitle": "The frost claimed the memories before harvest.",
-      "cta":      "Retry Harvest",
-      "back":     "Return to Fields"
+      "cta": "Retry Harvest",
+      "back": "Return to Fields"
     },
-    "timeElapsed":    "Time",
+    "timeElapsed": "Time",
     "failedAttempts": "Errors",
-    "score":          "Score",
+    "score": "Score",
     "share": {
-      "cta":       "Share Result",
+      "cta": "Share Result",
       "preparing": "Preparing…"
     }
   },
   "leaderboard": {
-    "badge":      "Trophy Hall",
-    "title":      "Rankings",
-    "subtitle":   "Top 10 harvesters across all difficulty levels.",
-    "empty":      "No harvests recorded yet. Be the first!",
-    "loading":    "Loading rankings…",
-    "you":        "You",
+    "badge": "Trophy Hall",
+    "title": "Rankings",
+    "subtitle": "Top 10 harvesters across all difficulty levels.",
+    "empty": "No harvests recorded yet. Be the first!",
+    "loading": "Loading rankings…",
+    "you": "You",
     "pointsUnit": "pts",
     "tabs": {
-      "easy":   "Easy",
+      "easy": "Easy",
       "medium": "Medium",
-      "hard":   "Hard"
+      "hard": "Hard"
     }
   },
   "about": {
-    "badge":           "CAAF",
-    "title":           "About Us",
-    "subtitle":        "Cooperativa Agropecuaria de Acopiadores Federados Limitada",
-    "whoTitle":        "Who We Are",
-    "whoBody":         "The Cooperativa Agropecuaria de Acopiadores Federados Limitada unites grain and oilseed collection companies who, through cooperative action, strengthen their commercial participation. The primary goal is to increase the profitability and competitiveness of its members by providing comprehensive service across all stages of commercialization.",
-    "benefitsTitle":   "Benefits",
+    "badge": "CAAF",
+    "title": "About Us",
+    "subtitle": "Cooperativa Agropecuaria de Acopiadores Federados Limitada",
+    "whoTitle": "Who We Are",
+    "whoBody": "The Cooperativa Agropecuaria de Acopiadores Federados Limitada unites grain and oilseed collection companies who, through cooperative action, strengthen their commercial participation. The primary goal is to increase the profitability and competitiveness of its members by providing comprehensive service across all stages of commercialization.",
+    "benefitsTitle": "Benefits",
     "benefits": [
       "Greater scale means greater negotiating power with suppliers.",
       "Creation of vertical integration structures with scale-controlled costs.",
@@ -151,15 +159,15 @@
       "Reducing management and logistics costs.",
       "Building and expanding commercial networks across member regions."
     ],
-    "servicesBadge":   "Services",
-    "servicesTitle":   "Our Services",
-    "servicesBody":    "Advisory services, training, registrations, courses and programs in national and international quality management systems, certifiable standards and applicable regulations. Transportation, registrations, and quotes.",
-    "memoryBadge":     "CAAF Memory",
-    "memoryTitle":     "CAAF Memory",
-    "memoryBody":      "A playful experience designed to connect members with the cooperative's values. Train your memory while exploring the CAAF universe."
+    "servicesBadge": "Services",
+    "servicesTitle": "Our Services",
+    "servicesBody": "Advisory services, training, registrations, courses and programs in national and international quality management systems, certifiable standards and applicable regulations. Transportation, registrations, and quotes.",
+    "memoryBadge": "CAAF Memory",
+    "memoryTitle": "CAAF Memory",
+    "memoryBody": "A playful experience designed to connect members with the cooperative's values. Train your memory while exploring the CAAF universe."
   },
   "achievements": {
-    "sectionTitle":   "Your Medals",
+    "sectionTitle": "Your Medals",
     "sectionSubtitle": "Unlock medals by reaching milestones in your harvests.",
     "locked": "Locked",
     "toast": {
@@ -197,26 +205,26 @@
     }
   },
   "privacy": {
-    "badge":    "Privacy",
-    "title":    "Privacy Policy",
+    "badge": "Privacy",
+    "title": "Privacy Policy",
     "subtitle": "CAAF Memory does not require personal data to work. Here we explain what we store and why.",
-    "back":     "Back",
+    "back": "Back",
     "sections": {
       "noPersonal": {
         "title": "No personal data",
-        "body":  "We don't ask for your email, phone number, address or any personally identifying information. The only data you enter is a nickname of your choice and a representative icon, both publicly visible on the ranking."
+        "body": "We don't ask for your email, phone number, address or any personally identifying information. The only data you enter is a nickname of your choice and a representative icon, both publicly visible on the ranking."
       },
       "collected": {
         "title": "What we store",
-        "body":  "We store your game name, chosen icon, scores and game statistics (time, errors, difficulty, outcome). We also record the date of your last session and whether you shared a result. This information is stored in Firebase Firestore linked to an anonymous identifier generated by your device."
+        "body": "We store your game name, chosen icon, scores and game statistics (time, errors, difficulty, outcome). We also record the date of your last session and whether you shared a result. This information is stored in Firebase Firestore linked to an anonymous identifier generated by your device."
       },
       "purpose": {
         "title": "How we use the data",
-        "body":  "Data is used exclusively to display the ranking between CAAF congress participants and to allow the organizing team to view participation statistics. It is not shared with third parties or used for advertising purposes."
+        "body": "Data is used exclusively to display the ranking between CAAF congress participants and to allow the organizing team to view participation statistics. It is not shared with third parties or used for advertising purposes."
       },
       "deletion": {
         "title": "Data deletion",
-        "body":  "You can sign out from Settings at any time. This removes your profile from the device. To delete your data from the server, contact the congress organizing team."
+        "body": "You can sign out from Settings at any time. This removes your profile from the device. To delete your data from the server, contact the congress organizing team."
       }
     },
     "footerNote": "CAAF Memory is an experience designed for the Cooperativa Agropecuaria de Acopiadores Federados Limitada congress. Collected data is valid exclusively during the event."
@@ -224,25 +232,25 @@
   "settings": {
     "title": "Settings",
     "language": {
-      "title":    "Language",
+      "title": "Language",
       "subtitle": "Choose the app display language"
     },
     "theme": {
-      "title":    "Appearance",
+      "title": "Appearance",
       "subtitle": "Select your preferred visual mode",
-      "dark":     "Dark",
-      "light":    "Light",
-      "system":   "System"
+      "dark": "Dark",
+      "light": "Light",
+      "system": "System"
     },
     "profile": {
-      "title":         "Your Profile",
-      "subtitle":      "Active session on this device.",
+      "title": "Your Profile",
+      "subtitle": "Active session on this device.",
       "activeSession": "Active session",
-      "logout":        "Sign out"
+      "logout": "Sign out"
     },
     "share": {
-      "title":     "Share App",
-      "subtitle":  "Others can scan this to join the game",
+      "title": "Share App",
+      "subtitle": "Others can scan this to join the game",
       "scanLabel": "Scan to play"
     }
   }

@@ -1,9 +1,11 @@
+import { useState, useEffect } from 'react'
 import { Brain, Trophy, Lock, ArrowRight, ExternalLink } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { Card }   from '../../components/ui/Card'
-import { Text }   from '../../components/ui/Typography'
-import { FadeIn } from '../../components/ui/FadeIn'
+import { Card }     from '../../components/ui/Card'
+import { Text }     from '../../components/ui/Typography'
+import { FadeIn }   from '../../components/ui/FadeIn'
+import { useInView } from '../../hooks/useInView'
 import { MEDALS, getEarnedMedalIds } from '../../services/achievementService'
 
 /* ── Medal icon color map (matches achievementService colors) ──── */
@@ -73,8 +75,18 @@ export function BentoFeatures() {
   const displayMedals  = earnedMedals.slice(0, 3)
   const overflowCount  = count - displayMedals.length
 
+  // Progress bar — animate from 0 → pct when the bar enters view
+  const { ref: progressRef, inView: progressInView } = useInView({ threshold: 0.4, once: true })
+  const [animatedPct, setAnimatedPct] = useState(0)
+
+  useEffect(() => {
+    if (!progressInView) return
+    const t = setTimeout(() => setAnimatedPct(Math.max(pct, 3)), 150)
+    return () => clearTimeout(t)
+  }, [progressInView, pct])
+
   return (
-    <section className="relative z-20 px-4 -mt-4 mb-24 max-w-4xl mx-auto w-full">
+    <section className="relative z-20 px-4 -mt-24 mb-24 max-w-4xl mx-auto w-full">
       {/*
         Mobile:  2 columns
         Tablet:  3 columns — F1 (2/3) | F2 (1/3)
@@ -98,12 +110,12 @@ export function BentoFeatures() {
               </Text>
             </div>
 
-            {/* Progress bar — driven by medal progress */}
-            <div className="flex items-center gap-3">
+            {/* Progress bar — driven by medal progress, animates on enter */}
+            <div ref={progressRef} className="flex items-center gap-3">
               <div className="flex-1 h-1.5 bg-[var(--color-primary)]/20 rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-[var(--color-primary)] rounded-full transition-all duration-700"
-                  style={{ width: `${Math.max(pct, 3)}%` }}
+                  className="h-full bg-[var(--color-primary)] rounded-full transition-all duration-1000 ease-out"
+                  style={{ width: `${animatedPct}%` }}
                 />
               </div>
               <Text scale="label-sm" color="primary">

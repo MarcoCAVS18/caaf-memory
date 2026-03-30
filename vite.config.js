@@ -19,17 +19,19 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png'],
+      includeAssets: ['favicon.svg', 'apple-touch-icon.png'],
       manifest: {
         name: 'CAAF Memory',
-        short_name: 'CAAF',
-        description: 'CAAF Memory App',
-        theme_color: '#121410',
+        short_name: 'CAAF Memory',
+        description: 'Poné a prueba tu memoria con imágenes del campo. Encontrá los pares, superá tus tiempos y escalá el ranking. Un juego de CAAF, Cooperativa Agropecuaria de Acopiadores Federados.',
+        lang: 'es',
+        theme_color: '#28360e',
         background_color: '#121410',
         display: 'standalone',
         orientation: 'portrait',
         scope: '/',
         start_url: '/',
+        categories: ['games', 'education'],
         icons: [
           { src: 'pwa-192x192.png', sizes: '192x192', type: 'image/png' },
           { src: 'pwa-512x512.png', sizes: '512x512', type: 'image/png', purpose: 'any maskable' },

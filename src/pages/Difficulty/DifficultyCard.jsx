@@ -1,4 +1,4 @@
-import { Grid2x2, Clock, RefreshCw, Leaf, Zap, Flame } from 'lucide-react'
+import { Grid2x2, Clock, RefreshCw, Leaf, Zap, Flame, RotateCcw } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Badge }  from '../../components/ui/Badge'
 import { Button } from '../../components/ui/Button'
@@ -34,7 +34,7 @@ const CONFIG = {
   },
 }
 
-export function DifficultyCard({ level, label, description, grid, time, attempts, onSelect }) {
+export function DifficultyCard({ level, label, description, grid, time, attempts, onSelect, canResume = false }) {
   const { t } = useTranslation()
   const c = CONFIG[level]
   const Icon = c.icon
@@ -51,7 +51,7 @@ export function DifficultyCard({ level, label, description, grid, time, attempts
       tabIndex={0}
       onKeyDown={(e) => e.key === 'Enter' && onSelect?.()}
     >
-      {/* Background image — low opacity, reveals on hover */}
+      {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center opacity-10 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none"
         style={{ backgroundImage: `url('${c.image}')` }}
@@ -63,7 +63,14 @@ export function DifficultyCard({ level, label, description, grid, time, attempts
           <div className={`w-12 h-12 rounded-[var(--radius-md)] flex items-center justify-center ${c.iconBg}`}>
             <Icon size={20} />
           </div>
-          {c.badgeKey && <Badge variant="secondary">{t(c.badgeKey)}</Badge>}
+          <div className="flex flex-col items-end gap-1.5">
+            {canResume && (
+              <Badge variant="primary">{t('difficulty.savedBadge')}</Badge>
+            )}
+            {c.badgeKey && !canResume && (
+              <Badge variant="secondary">{t(c.badgeKey)}</Badge>
+            )}
+          </div>
         </div>
 
         <Text scale="headline-md" className="text-[var(--color-on-surface)] mb-2">{label}</Text>
@@ -79,8 +86,11 @@ export function DifficultyCard({ level, label, description, grid, time, attempts
 
       {/* CTA */}
       <div className="relative z-10">
-        <Button variant={c.ctaVariant} className="w-full justify-center">
-          {t(c.ctaLabelKey)}
+        <Button variant={canResume ? 'primary' : c.ctaVariant} className="w-full justify-center gap-2">
+          {canResume
+            ? <><RotateCcw size={15} />{t('difficulty.continue')}</>
+            : t(c.ctaLabelKey)
+          }
         </Button>
       </div>
     </div>

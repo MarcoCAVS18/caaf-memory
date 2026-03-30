@@ -32,7 +32,7 @@ export function Input({
         className={[
           'w-full px-4 py-3',
           'bg-[var(--color-surface-container-lowest)]',
-          'text-[var(--color-on-surface)] text-sm',
+          'text-[var(--color-on-surface)] text-base',
           'font-[family-name:var(--font-body)]',
           'rounded-[var(--radius-md)]',
           'outline-none',

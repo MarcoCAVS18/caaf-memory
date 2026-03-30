@@ -9,7 +9,7 @@ export function ShareSection() {
   const { t }  = useTranslation()
   const [copied, setCopied] = useState(false)
 
-  const appUrl = window.location.origin
+  const appUrl = import.meta.env.VITE_APP_URL || window.location.origin
 
   async function handleCopy() {
     try {

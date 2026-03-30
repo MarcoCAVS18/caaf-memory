@@ -4,6 +4,7 @@ import { Trophy, Medal, Lock } from 'lucide-react'
 import { useLeaderboard }    from '../../hooks/useLeaderboard'
 import { useProfile }        from '../../hooks/useProfile'
 import { MEDALS, getEarnedMedalIds } from '../../services/achievementService'
+import { ICON_OPTIONS }      from '../../components/onboarding/iconOptions'
 import { FadeIn }            from '../../components/ui/FadeIn'
 import { Card }              from '../../components/ui/Card'
 import { Badge }             from '../../components/ui/Badge'
@@ -34,7 +35,10 @@ const AVATAR_COLORS = [
 ]
 
 function Avatar({ name = '?', iconKey = '' }) {
-  const idx = (iconKey.charCodeAt(0) || 0) % AVATAR_COLORS.length
+  const idx     = (iconKey.charCodeAt(0) || 0) % AVATAR_COLORS.length
+  const option  = ICON_OPTIONS.find((o) => o.key === iconKey)
+  const Icon    = option?.icon
+
   return (
     <div
       className={[
@@ -44,7 +48,10 @@ function Avatar({ name = '?', iconKey = '' }) {
       ].join(' ')}
       aria-hidden="true"
     >
-      {name.charAt(0).toUpperCase()}
+      {Icon
+        ? <Icon size={18} strokeWidth={2} />
+        : name.charAt(0).toUpperCase()
+      }
     </div>
   )
 }

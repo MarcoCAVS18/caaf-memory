@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { AppShell }       from './components/shared/AppShell'
 import HomePage           from './pages/Home'
 import DifficultyPage     from './pages/Difficulty'
@@ -9,21 +9,22 @@ import AboutPage          from './pages/About'
 import LeaderboardPage    from './pages/Leaderboard'
 import PrivacyPage        from './pages/Privacy'
 
+const router = createBrowserRouter([
+  {
+    element: <AppShell />,
+    children: [
+      { path: '/',            element: <HomePage />        },
+      { path: '/difficulty',  element: <DifficultyPage />  },
+      { path: '/game',        element: <GamePage />         },
+      { path: '/results',     element: <ResultsPage />      },
+      { path: '/settings',    element: <SettingsPage />     },
+      { path: '/about',       element: <AboutPage />        },
+      { path: '/leaderboard', element: <LeaderboardPage />  },
+      { path: '/privacy',     element: <PrivacyPage />      },
+    ],
+  },
+])
+
 export default function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<AppShell />}>
-          <Route path="/"           element={<HomePage />}      />
-          <Route path="/difficulty" element={<DifficultyPage />} />
-          <Route path="/game"       element={<GamePage />}       />
-          <Route path="/results"    element={<ResultsPage />}    />
-          <Route path="/settings"     element={<SettingsPage />}    />
-          <Route path="/about"        element={<AboutPage />}      />
-          <Route path="/leaderboard"  element={<LeaderboardPage />} />
-          <Route path="/privacy"      element={<PrivacyPage />}      />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  )
+  return <RouterProvider router={router} />
 }

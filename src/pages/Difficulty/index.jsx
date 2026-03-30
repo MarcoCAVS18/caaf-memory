@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Trophy, Swords, Star } from 'lucide-react'
@@ -6,6 +7,7 @@ import { Text }    from '../../components/ui/Typography'
 import { Card }    from '../../components/ui/Card'
 import { FadeIn }  from '../../components/ui/FadeIn'
 import { getStats } from '../../services/statsService'
+import { getSavedGame, fetchSavedGame } from '../../services/savedGameService'
 
 function StatSummary({ icon: Icon, value, label }) {
   return (
@@ -39,9 +41,16 @@ const DIFFICULTIES = [
 ]
 
 export default function DifficultyPage() {
-  const navigate = useNavigate()
-  const { t }    = useTranslation()
-  const stats    = getStats()
+  const navigate  = useNavigate()
+  const { t }     = useTranslation()
+  const stats     = getStats()
+
+  // Start with the local cache; refresh from Firestore in the background
+  const [savedGame, setSavedGame] = useState(getSavedGame)
+
+  useEffect(() => {
+    fetchSavedGame().then(setSavedGame)
+  }, [])
 
   return (
     <div className="px-4 pt-8 pb-8 max-w-2xl mx-auto w-full">
@@ -60,21 +69,25 @@ export default function DifficultyPage() {
         </header>
       </FadeIn>
 
-      {/* Difficulty Cards — staggered / 3-col on tablet */}
+      {/* Difficulty Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-        {DIFFICULTIES.map((d, i) => (
-          <FadeIn key={d.level} delay={i * 90} className="h-full">
-            <DifficultyCard
-              level={d.level}
-              label={t(`difficulty.${d.level}.label`)}
-              description={t(`difficulty.${d.level}.description`)}
-              grid={t('difficulty.grid', { size: d.gridSize })}
-              time={t(d.timeKey)}
-              attempts={t(d.attemptsKey)}
-              onSelect={() => navigate('/game', { state: { difficulty: d.level } })}
-            />
-          </FadeIn>
-        ))}
+        {DIFFICULTIES.map((d, i) => {
+          const canResume = savedGame?.difficulty === d.level
+          return (
+            <FadeIn key={d.level} delay={i * 90} className="h-full">
+              <DifficultyCard
+                level={d.level}
+                label={t(`difficulty.${d.level}.label`)}
+                description={t(`difficulty.${d.level}.description`)}
+                grid={t('difficulty.grid', { size: d.gridSize })}
+                time={t(d.timeKey)}
+                attempts={t(d.attemptsKey)}
+                canResume={canResume}
+                onSelect={() => navigate('/game', { state: { difficulty: d.level, resume: canResume } })}
+              />
+            </FadeIn>
+          )
+        })}
       </div>
 
       {/* Stats Bar */}

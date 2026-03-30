@@ -1,0 +1,24 @@
+[build]
+  command         = "npm run build"
+  publish         = "dist"
+
+# ── SPA fallback ──────────────────────────────────────────────────────────────
+# React Router handles all routes client-side.
+# Without this, any direct URL or refresh returns a 404 from Netlify.
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200
+
+# ── Environment variables ─────────────────────────────────────────────────────
+# Set these in Netlify → Site configuration → Environment variables.
+# They are injected at build time by Vite (must be prefixed VITE_).
+#
+# VITE_FIREBASE_API_KEY
+# VITE_FIREBASE_AUTH_DOMAIN
+# VITE_FIREBASE_PROJECT_ID
+# VITE_FIREBASE_STORAGE_BUCKET
+# VITE_FIREBASE_MESSAGING_SENDER_ID
+# VITE_FIREBASE_APP_ID
+# VITE_FIREBASE_MEASUREMENT_ID
+# VITE_APP_URL                    → https://caaf.netlify.app

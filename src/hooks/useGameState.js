@@ -12,6 +12,8 @@
  *
  * Phases: 'playing' → 'won' | 'lost'
  * The Game page watches `phase` and navigates to /results when it changes.
+ *
+ * Pass `savedState` (from savedGameService) to resume a previous game.
  */
 
 import { useState, useEffect } from 'react'
@@ -19,17 +21,17 @@ import { GAME_CONFIG, generateCards, calculateScore } from '../pages/Game/gameCo
 
 const MISMATCH_DELAY = 900  // ms before mismatched cards flip back
 
-export function useGameState(difficulty = 'medium') {
+export function useGameState(difficulty = 'medium', savedState = null) {
   const config     = GAME_CONFIG[difficulty]
   const totalPairs = (config.cols * config.rows) / 2
 
-  const [cards,          setCards]    = useState(() => generateCards(difficulty))
-  const [flipped,        setFlipped]  = useState([])           // at most 2 card IDs
-  const [matchedPairs,   setMatched]  = useState(new Set())    // set of matched pairIds
-  const [failedAttempts, setFailed]   = useState(0)
-  const [elapsed,        setElapsed]  = useState(0)            // seconds
-  const [phase,          setPhase]    = useState('playing')    // 'playing'|'won'|'lost'
-  const [locked,         setLocked]   = useState(false)        // blocks clicks while evaluating
+  const [cards,          setCards]   = useState(() => savedState?.cards          ?? generateCards(difficulty))
+  const [flipped,        setFlipped] = useState([])
+  const [matchedPairs,   setMatched] = useState(() => new Set(savedState?.matchedPairs ?? []))
+  const [failedAttempts, setFailed]  = useState(() => savedState?.failedAttempts  ?? 0)
+  const [elapsed,        setElapsed] = useState(() => savedState?.elapsed         ?? 0)
+  const [phase,          setPhase]   = useState('playing')
+  const [locked,         setLocked]  = useState(false)
 
   // ── Timer ────────────────────────────────────────────────────────────────────
   useEffect(() => {
@@ -53,19 +55,15 @@ export function useGameState(difficulty = 'medium') {
     const card = cards.find((c) => c.id === cardId)
     if (!card) return
 
-    // Ignore already-revealed or locked cards
     if (card.state === 'matched' || card.state === 'flipped' || card.state === 'mismatched') return
     if (flipped.length >= 2) return
 
-    // Flip this card face-up
     setCards((prev) => prev.map((c) => (c.id === cardId ? { ...c, state: 'flipped' } : c)))
     const newFlipped = [...flipped, cardId]
     setFlipped(newFlipped)
 
-    // First card — wait for the second
     if (newFlipped.length < 2) return
 
-    // ── Second card: evaluate ──────────────────────────────────────────────────
     setLocked(true)
     const firstCard = cards.find((c) => c.id === newFlipped[0])
 
@@ -80,13 +78,13 @@ export function useGameState(difficulty = 'medium') {
       setLocked(false)
       if (newMatched.size === totalPairs) setPhase('won')
     } else {
-      // ✗ MISMATCH — briefly show error state then reset
+      // ✗ MISMATCH
       setCards((prev) =>
         prev.map((c) => (newFlipped.includes(c.id) ? { ...c, state: 'mismatched' } : c)),
       )
-      const newFailed  = failedAttempts + 1
+      const newFailed = failedAttempts + 1
       setFailed(newFailed)
-      const willLose   = config.maxAttempts !== null && newFailed >= config.maxAttempts
+      const willLose  = config.maxAttempts !== null && newFailed >= config.maxAttempts
 
       setTimeout(() => {
         setCards((prev) =>
@@ -116,16 +114,19 @@ export function useGameState(difficulty = 'medium') {
     elapsed,
     attemptsLeft,
     attemptsPercent,
-    totalAttempts: config.maxAttempts,
+    totalAttempts:   config.maxAttempts,
     failedAttempts,
-    matchedPairs:  matchedPairs.size,
+    matchedPairs:    matchedPairs.size,
     totalPairs,
     phase,
-    score:         calculateScore(difficulty, elapsed, failedAttempts),
+    score:           calculateScore(difficulty, elapsed, failedAttempts),
     locked,
-    cols:          config.cols,
+    cols:            config.cols,
     timeLimitSec,
     timeLeft,
     handleCardClick,
+    // Raw state needed for saveGame()
+    rawCards:        cards,
+    rawMatchedPairs: matchedPairs,
   }
 }

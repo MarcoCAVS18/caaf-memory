@@ -24,17 +24,8 @@ export function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 h-full min-h-[inherit] flex items-end md:items-center">
-        <div className="w-full max-w-4xl mx-auto px-6 pb-16 md:pb-0">
-          {/* Logo — above headline */}
-          <img
-            src="/images/logo.svg"
-            alt="CAAF"
-            draggable={false}
-            className="mb-8 block"
-            style={{ width: '160px', height: 'auto' }}
-          />
-
+      <div className="relative z-10 h-full  flex items-end md:items-center">
+        <div className="w-full max-w-4xl mx-auto px-6 py-20 md:pb-0">
           <Badge variant="secondary" className="mb-6">
             {t('home.badge')}
           </Badge>

@@ -27,7 +27,7 @@ export function ThemedLogo({ className = 'h-8 w-auto', alt = 'CAAF' }) {
  */
 export function ThemedIsologo({ size = '32px', style = {}, className = '' }) {
   const { resolvedMode } = useTheme()
-  const color = resolvedMode === 'light' ? '#121212' : '#ffffff'
+  const color = resolvedMode === 'light' ? '#121212' : 'var(--color-primary)'
 
   return (
     <div

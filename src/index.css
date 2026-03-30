@@ -82,6 +82,10 @@
   font-family: var(--font-body);
 }
 
+html {
+  overscroll-behavior: none;
+}
+
 body {
   background-color: var(--color-surface);
   color: var(--color-on-surface);
@@ -165,4 +169,26 @@ body::before {
 }
 .flip-card-back {
   transform: rotateY(180deg);
+}
+
+/* ── App Loader ── */
+.logo-loader {
+  width: 100px;
+  height: 100px;
+  -webkit-mask-image: url(/images/logo-black.svg);
+  mask-image: url(/images/logo-black.svg);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  background: linear-gradient(90deg, #ffffff 25%, var(--color-primary, #bbce96) 50%, #ffffff 75%);
+  background-size: 200% 100%;
+  animation: logo-shimmer 1.6s ease-in-out infinite;
+}
+
+@keyframes logo-shimmer {
+  0%   { background-position: 200% center; }
+  100% { background-position: -200% center; }
 }
