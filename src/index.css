@@ -86,6 +86,17 @@ html {
   overscroll-behavior: none;
 }
 
+/* ── Safe-area helpers (PWA / notch) ───────────────────────────────────────── */
+/* env() vars are 0px in regular browser → zero cost outside PWA standalone   */
+.pt-safe-topbar {
+  padding-top: calc(5rem + env(safe-area-inset-top, 0px));
+}
+@media (min-width: 768px) {
+  .pt-safe-topbar {
+    padding-top: calc(6rem + env(safe-area-inset-top, 0px));
+  }
+}
+
 body {
   background-color: var(--color-surface);
   color: var(--color-on-surface);

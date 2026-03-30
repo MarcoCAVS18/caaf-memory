@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { Outlet } from 'react-router-dom'
 import { TopAppBar }          from './TopAppBar'
 import { BottomNav }          from './BottomNav'
@@ -19,8 +20,18 @@ const APP_IMAGES = [
 export function AppShell() {
   const { needsOnboarding, isLoading, createProfile } = useProfile()
   const imagesLoading = useImagePreload(APP_IMAGES)
+  const prevNeedsOnboarding = useRef(false)
 
   const showLoader = isLoading || imagesLoading
+
+  // Scroll to top when onboarding completes (pathname doesn't change, so
+  // ScrollToTop won't fire — we detect the true→false transition manually)
+  useEffect(() => {
+    if (prevNeedsOnboarding.current && !needsOnboarding && !isLoading) {
+      window.scrollTo({ top: 0, behavior: 'instant' })
+    }
+    prevNeedsOnboarding.current = needsOnboarding
+  }, [needsOnboarding, isLoading])
 
   return (
     <div className="min-h-screen flex flex-col bg-[var(--color-surface)]">
@@ -34,7 +45,7 @@ export function AppShell() {
               mobile  → ~80px (bar + safe area)
               tablet  → ~88px (floating pill + 20px mb + safe area)
       */}
-      <main className="flex-1 pt-20 md:pt-24 pb-20 md:pb-28">
+      <main className="flex-1 pt-safe-topbar pb-20 md:pb-28">
         <Outlet />
       </main>
 

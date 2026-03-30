@@ -10,7 +10,10 @@ export function TopAppBar() {
   const isSettings = pathname === '/settings'
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-[var(--color-surface)]/60 backdrop-blur-xl">
+    <header
+      className="fixed top-0 w-full z-50 bg-[var(--color-surface)]/60 backdrop-blur-xl"
+      style={{ paddingTop: 'env(safe-area-inset-top, 0px)' }}
+    >
       <div className="flex justify-between items-center px-6 py-4 md:py-5 w-full">
 
         {/* Left icon */}
