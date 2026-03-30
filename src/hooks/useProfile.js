@@ -36,8 +36,15 @@ export function useProfile() {
     return () => window.removeEventListener('caaf:logout', onLogout)
   }, [])
 
-  const createProfile = useCallback(async (name, iconKey) => {
-    const playerId = generatePlayerId()
+  // Restore state when recoverProfile() fires the login event
+  useEffect(() => {
+    function onLogin(e) { setProfile(e.detail) }
+    window.addEventListener('caaf:login', onLogin)
+    return () => window.removeEventListener('caaf:login', onLogin)
+  }, [])
+
+  const createProfile = useCallback(async (name, iconKey, existingPlayerId) => {
+    const playerId = existingPlayerId ?? generatePlayerId()
     const saved    = await saveProfile({ name, iconKey, playerId })
     setProfile(saved)
   }, [])

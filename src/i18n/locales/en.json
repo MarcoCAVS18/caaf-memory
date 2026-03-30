@@ -18,8 +18,10 @@
     "submit": "Start harvesting",
     "saving": "Saving…",
     "checking": "Checking…",
-    "nameTaken": "{{name}} with this icon already exists in the game.",
-    "nameTakenHint": "Try a nickname (e.g. {{name}} C.) or pick a different icon."
+    "recover": "We found your profile, {{name}}!",
+    "recoverHint": "If that is you, recover your session and continue with your history.",
+    "recoverBtn": "That is me, recover session",
+    "recoverDismiss": "Not me, use another name"
   },
   "home": {
     "badge": "CAAF Congress 2026",

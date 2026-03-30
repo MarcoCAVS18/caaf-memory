@@ -18,8 +18,10 @@
     "submit": "Comenzar a cosechar",
     "saving": "Guardando…",
     "checking": "Verificando…",
-    "nameTaken": "Ya existe un {{name}} con este icono en el juego.",
-    "nameTakenHint": "Prueba con un apodo (ej. {{name}} C.) o elige otro icono."
+    "recover": "¡Encontramos tu perfil, {{name}}!",
+    "recoverHint": "Si sos vos, recuperá tu sesión y continuá con tu historial.",
+    "recoverBtn": "Soy yo, recuperar sesión",
+    "recoverDismiss": "No soy yo, usar otro nombre"
   },
   "home": {
     "badge": "Congreso CAAF 2026",

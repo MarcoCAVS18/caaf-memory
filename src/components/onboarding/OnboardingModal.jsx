@@ -1,62 +1,70 @@
 import { useState } from 'react'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, RotateCcw } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
-import { IconPicker }     from './IconPicker'
-import { ICON_OPTIONS }   from './iconOptions'
-import { isProfileTaken } from '../../services/profileService'
+import { IconPicker }              from './IconPicker'
+import { ICON_OPTIONS }            from './iconOptions'
+import { findProfileByNameAndIcon, recoverProfile } from '../../services/profileService'
 import { Button } from '../ui/Button'
 import { Input }  from '../ui/Input'
 import { Text }   from '../ui/Typography'
 import { Badge }  from '../ui/Badge'
 
-// 'idle' | 'checking' | 'saving'
-const STATUS = { IDLE: 'idle', CHECKING: 'checking', SAVING: 'saving' }
+// 'idle' | 'checking' | 'saving' | 'recovering'
+const STATUS = { IDLE: 'idle', CHECKING: 'checking', SAVING: 'saving', RECOVERING: 'recovering' }
 
 export function OnboardingModal({ onComplete }) {
   const { t } = useTranslation()
-  const [name,    setName]    = useState('')
-  const [iconKey, setIconKey] = useState(ICON_OPTIONS[0].key)
-  const [status,  setStatus]  = useState(STATUS.IDLE)
-  const [error,   setError]   = useState('')
-  const [hint,    setHint]    = useState('')
+  const [name,           setName]          = useState('')
+  const [iconKey,        setIconKey]       = useState(ICON_OPTIONS[0].key)
+  const [status,         setStatus]        = useState(STATUS.IDLE)
+  const [error,          setError]         = useState('')
+  const [existingProfile, setExistingProfile] = useState(null)  // found profile to recover
 
   const busy = status !== STATUS.IDLE
 
   function clearErrors() {
     setError('')
-    setHint('')
+    setExistingProfile(null)
   }
 
   async function handleSubmit(e) {
     e.preventDefault()
     const trimmed = name.trim()
-
-    if (!trimmed) {
-      setError(t('onboarding.nameRequired'))
-      setHint('')
-      return
-    }
+    if (!trimmed) { setError(t('onboarding.nameRequired')); return }
 
     clearErrors()
     setStatus(STATUS.CHECKING)
 
-    const taken = await isProfileTaken(trimmed, iconKey)
+    const found = await findProfileByNameAndIcon(trimmed, iconKey)
 
-    if (taken) {
-      setError(t('onboarding.nameTaken', { name: trimmed }))
-      setHint(t('onboarding.nameTakenHint', { name: trimmed }))
+    if (found) {
+      // Name + icon already exists → offer recovery instead of blocking
+      setExistingProfile(found)
       setStatus(STATUS.IDLE)
       return
     }
 
+    // Free combination → create new profile
     setStatus(STATUS.SAVING)
     await onComplete(trimmed, iconKey)
-    // component unmounts on success — no need to reset
+  }
+
+  async function handleRecover() {
+    setStatus(STATUS.RECOVERING)
+    const profile = await recoverProfile(existingProfile.playerId)
+    if (profile) {
+      // Trigger app re-render with the restored profile
+      window.dispatchEvent(new CustomEvent('caaf:login', { detail: profile }))
+    } else {
+      // Firestore unreachable — just complete with the known data
+      await onComplete(existingProfile.name, existingProfile.iconKey, existingProfile.playerId)
+    }
   }
 
   function getButtonLabel() {
-    if (status === STATUS.CHECKING) return t('onboarding.checking')
-    if (status === STATUS.SAVING)   return t('onboarding.saving')
+    if (status === STATUS.CHECKING)   return t('onboarding.checking')
+    if (status === STATUS.SAVING)     return t('onboarding.saving')
+    if (status === STATUS.RECOVERING) return t('onboarding.saving')
     return t('onboarding.submit')
   }
 
@@ -114,12 +122,6 @@ export function OnboardingModal({ onComplete }) {
                 autoFocus
                 maxLength={24}
               />
-              {/* Nickname hint — only visible when duplicate error */}
-              {hint && (
-                <Text scale="body-md" color="muted" className="px-1 leading-snug">
-                  {hint}
-                </Text>
-              )}
             </div>
 
             <div className="flex flex-col gap-3">
@@ -130,16 +132,50 @@ export function OnboardingModal({ onComplete }) {
               />
             </div>
 
-            <Button
-              type="submit"
-              variant="primary"
-              size="lg"
-              className="w-full justify-center"
-              disabled={busy || !name.trim()}
-            >
-              {getButtonLabel()}
-              {!busy && <ArrowRight size={18} />}
-            </Button>
+            {/* Recovery prompt — shown when name+icon already exists */}
+            {existingProfile && (
+              <div className="flex flex-col gap-3 p-4 rounded-[var(--radius-lg)] bg-[var(--color-primary-container)]/40 border border-[var(--color-primary)]/20">
+                <div>
+                  <Text scale="title-md" className="text-[var(--color-primary)] mb-1">
+                    {t('onboarding.recover', { name: existingProfile.name })}
+                  </Text>
+                  <Text scale="body-sm" color="muted">
+                    {t('onboarding.recoverHint')}
+                  </Text>
+                </div>
+                <Button
+                  type="button"
+                  variant="primary"
+                  size="md"
+                  className="w-full justify-center gap-2"
+                  onClick={handleRecover}
+                  disabled={busy}
+                >
+                  <RotateCcw size={15} />
+                  {t('onboarding.recoverBtn')}
+                </Button>
+                <button
+                  type="button"
+                  onClick={clearErrors}
+                  className="text-[var(--color-on-surface-variant)] text-xs font-semibold uppercase tracking-widest hover:text-[var(--color-on-surface)] transition-colors cursor-pointer"
+                >
+                  {t('onboarding.recoverDismiss')}
+                </button>
+              </div>
+            )}
+
+            {!existingProfile && (
+              <Button
+                type="submit"
+                variant="primary"
+                size="lg"
+                className="w-full justify-center"
+                disabled={busy || !name.trim()}
+              >
+                {getButtonLabel()}
+                {!busy && <ArrowRight size={18} />}
+              </Button>
+            )}
           </form>
 
         </div>

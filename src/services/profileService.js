@@ -11,7 +11,7 @@
  *     createdAt: ISO string
  */
 
-import { doc, setDoc, collection, query, where, getDocs } from 'firebase/firestore'
+import { doc, setDoc, getDoc, collection, query, where, getDocs } from 'firebase/firestore'
 import { db } from '../lib/firebase'
 
 const LS_KEY = 'caaf_player'
@@ -75,24 +75,37 @@ export async function saveProfile({ name, iconKey, playerId }) {
 }
 
 /**
- * Checks whether the name + iconKey combination already exists in Firestore.
+ * Looks up an existing player by name + iconKey.
  *
- * Strategy: query by name only (single-field — no composite index needed),
- * then filter by iconKey client-side.
- *
- * Returns:
- *   true  → combination is taken
- *   false → combination is free (or Firestore was unreachable — fail open so the
- *           congress never gets blocked by a network blip)
+ * Returns the full profile object if found, or null if free / unreachable.
+ * Used both for duplicate-check and session recovery.
  */
-export async function isProfileTaken(name, iconKey) {
+export async function findProfileByNameAndIcon(name, iconKey) {
   try {
     const q    = query(collection(db, 'players'), where('name', '==', name.trim()))
     const snap = await getDocs(q)
-    return snap.docs.some((d) => d.data().iconKey === iconKey)
+    const match = snap.docs.find((d) => d.data().iconKey === iconKey)
+    return match ? match.data() : null
   } catch (err) {
-    console.warn('[profileService] duplicate-check failed, allowing through:', err.message)
-    return false   // fail open — never block the user due to a network error
+    console.warn('[profileService] lookup failed, allowing through:', err.message)
+    return null  // fail open — never block the user due to a network error
+  }
+}
+
+/**
+ * Restores a previously saved profile from Firestore into localStorage.
+ * Used when the player recovers their session after losing localStorage.
+ */
+export async function recoverProfile(playerId) {
+  try {
+    const snap = await getDoc(doc(db, 'players', playerId))
+    if (!snap.exists()) return null
+    const profile = snap.data()
+    saveToStorage(profile)
+    return profile
+  } catch (err) {
+    console.warn('[profileService] recovery failed:', err.message)
+    return null
   }
 }
 
