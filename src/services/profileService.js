@@ -100,8 +100,16 @@ export async function recoverProfile(playerId) {
   try {
     const snap = await getDoc(doc(db, 'players', playerId))
     if (!snap.exists()) return null
-    const profile = snap.data()
+    const data = snap.data()
+
+    // Restore profile (without internal Firestore fields)
+    const { stats, medals, ...profile } = data
     saveToStorage(profile)
+
+    // Restore stats and medals if they were synced
+    if (stats)  try { localStorage.setItem('caaf_stats',  JSON.stringify(stats))  } catch {}
+    if (medals) try { localStorage.setItem('caaf_medals', JSON.stringify(medals)) } catch {}
+
     return profile
   } catch (err) {
     console.warn('[profileService] recovery failed:', err.message)

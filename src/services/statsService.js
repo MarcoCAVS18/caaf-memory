@@ -13,6 +13,8 @@
  *   fastestWinSec — fastest win in seconds (null = never won)
  */
 
+import { updateProfile } from './profileService'
+
 const LS_KEY = 'caaf_stats'
 
 const DEFAULT_STATS = {
@@ -61,6 +63,9 @@ export function recordGame(outcome, difficulty, elapsedSec) {
   } catch {
     // storage full — silently ignore
   }
+
+  // Sync to Firestore fire-and-forget — survives localStorage wipes
+  updateProfile({ stats: updated })
 
   return updated
 }

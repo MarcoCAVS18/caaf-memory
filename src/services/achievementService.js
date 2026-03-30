@@ -11,6 +11,7 @@
  */
 
 import { Sprout, Leaf, Sun, Droplets, Zap, Flame, Trophy } from 'lucide-react'
+import { updateProfile } from './profileService'
 
 const LS_KEY = 'caaf_medals'
 
@@ -100,7 +101,10 @@ export function getEarnedMedalIds() {
 function grantMedal(id) {
   const earned = getEarnedMedalIds()
   if (earned.includes(id)) return false
-  localStorage.setItem(LS_KEY, JSON.stringify([...earned, id]))
+  const updated = [...earned, id]
+  localStorage.setItem(LS_KEY, JSON.stringify(updated))
+  // Sync to Firestore fire-and-forget — survives localStorage wipes
+  updateProfile({ medals: updated })
   return true
 }
 
