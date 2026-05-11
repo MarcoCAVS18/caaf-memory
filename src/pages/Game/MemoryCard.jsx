@@ -8,30 +8,28 @@
  *   mismatched  — face-up briefly with error tint before resetting
  */
 
-import { SYMBOL_MAP } from './gameConfig'
+import { SYMBOL_MAP, GAME_SYMBOLS } from './gameConfig'
+
+const DEFAULT_KEY = GAME_SYMBOLS[0].key
 
 const COLOR_MAP = {
   primary: {
     container: 'bg-[var(--color-primary-container)]',
-    icon:      'text-[var(--color-primary)]',
     ring:      'ring-2 ring-[var(--color-primary)]/60 shadow-[0_0_20px_rgba(187,206,150,0.25)]',
   },
   secondary: {
     container: 'bg-[var(--color-secondary-container)]',
-    icon:      'text-[var(--color-secondary)]',
     ring:      'ring-2 ring-[var(--color-secondary)]/60 shadow-[0_0_20px_rgba(233,193,118,0.25)]',
   },
   tertiary: {
     container: 'bg-[var(--color-tertiary-container)]',
-    icon:      'text-[var(--color-tertiary)]',
     ring:      'ring-2 ring-[var(--color-tertiary)]/60',
   },
 }
 
-export function MemoryCard({ state = 'idle', iconKey = 'leaf', onClick, disabled }) {
-  const symbol    = SYMBOL_MAP[iconKey] ?? SYMBOL_MAP['leaf']
-  const colors    = COLOR_MAP[symbol.color]
-  const Icon      = symbol.icon
+export function MemoryCard({ state = 'idle', iconKey = DEFAULT_KEY, onClick, disabled }) {
+  const symbol     = SYMBOL_MAP[iconKey] ?? SYMBOL_MAP[DEFAULT_KEY]
+  const colors     = COLOR_MAP[symbol.color]
   const isRevealed = state === 'flipped' || state === 'matched' || state === 'mismatched'
 
   return (
@@ -76,7 +74,7 @@ export function MemoryCard({ state = 'idle', iconKey = 'leaf', onClick, disabled
           className={[
             'flip-card-face flip-card-back absolute inset-0',
             'rounded-[var(--radius-md)]',
-            'flex items-center justify-center',
+            'flex items-center justify-center overflow-hidden p-2',
             state === 'mismatched'
               ? 'bg-[var(--color-error-container)] shadow-[inset_0_0_0_2px_var(--color-error)]'
               : colors.container,
@@ -84,10 +82,12 @@ export function MemoryCard({ state = 'idle', iconKey = 'leaf', onClick, disabled
             'transition-all duration-300',
           ].join(' ')}
         >
-          {state === 'mismatched'
-            ? <Icon className="w-2/5 h-2/5 text-[var(--color-error)]" strokeWidth={2} />
-            : <Icon className={`w-2/5 h-2/5 ${colors.icon}`} strokeWidth={1.8} />
-          }
+          <img
+            src={symbol.image}
+            alt=""
+            draggable={false}
+            className="w-full h-full object-contain select-none"
+          />
         </div>
 
       </div>

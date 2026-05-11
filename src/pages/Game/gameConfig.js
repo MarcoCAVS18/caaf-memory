@@ -6,36 +6,25 @@
  * Grid sizes:
  *   easy   → 4 cols × 3 rows = 12 cards = 6 pairs
  *   medium → 4 cols × 4 rows = 16 cards = 8 pairs
- *   hard   → 5 cols × 6 rows = 30 cards = 15 pairs
+ *   hard   → 4 cols × 4 rows = 16 cards = 8 pairs
  *
  * maxAttempts: number of WRONG pair flips allowed before losing.
  *   null = infinite (easy mode)
  */
 
-import {
-  Leaf, Sprout, Sun, Flame, Droplets,
-  Wind, TreePine, Bird, Star, Moon,
-  Mountain, Flower, Cloud, Snowflake, Zap,
-} from 'lucide-react'
+// ── 8 symbols (enough for Medium & Hard mode's 8 pairs) ──────────────────────
 
-// ── 15 symbols (enough for Hard mode's 15 pairs) ─────────────────────────────
+const IMG = (file) => `/images/1x/${encodeURIComponent(file)}`
 
 export const GAME_SYMBOLS = [
-  { key: 'leaf',      icon: Leaf,      color: 'primary'   },
-  { key: 'sprout',    icon: Sprout,    color: 'primary'   },
-  { key: 'sun',       icon: Sun,       color: 'secondary' },
-  { key: 'flame',     icon: Flame,     color: 'secondary' },
-  { key: 'droplets',  icon: Droplets,  color: 'tertiary'  },
-  { key: 'wind',      icon: Wind,      color: 'tertiary'  },
-  { key: 'tree',      icon: TreePine,  color: 'primary'   },
-  { key: 'bird',      icon: Bird,      color: 'secondary' },
-  { key: 'star',      icon: Star,      color: 'secondary' },
-  { key: 'moon',      icon: Moon,      color: 'tertiary'  },
-  { key: 'mountain',  icon: Mountain,  color: 'primary'   },
-  { key: 'flower',    icon: Flower,    color: 'tertiary'  },
-  { key: 'cloud',     icon: Cloud,     color: 'secondary' },
-  { key: 'snowflake', icon: Snowflake, color: 'tertiary'  },
-  { key: 'zap',       icon: Zap,       color: 'secondary' },
+  { key: 'card1', image: IMG('Mesa de trabajo 1-100.jpg'),          color: 'primary'   },
+  { key: 'card2', image: IMG('Mesa de trabajo 1 copia-100.jpg'),    color: 'secondary' },
+  { key: 'card3', image: IMG('Mesa de trabajo 1 copia 2-100.jpg'),  color: 'tertiary'  },
+  { key: 'card4', image: IMG('Mesa de trabajo 1 copia 3-100.jpg'),  color: 'primary'   },
+  { key: 'card5', image: IMG('Mesa de trabajo 1 copia 4-100.jpg'),  color: 'secondary' },
+  { key: 'card6', image: IMG('Mesa de trabajo 1 copia 5-100.jpg'),  color: 'tertiary'  },
+  { key: 'card7', image: IMG('Mesa de trabajo 1 copia 6-100.jpg'),  color: 'primary'   },
+  { key: 'card8', image: IMG('Mesa de trabajo 2-100.jpg'),          color: 'secondary' },
 ]
 
 /** Fast lookup: key → symbol object */
@@ -63,8 +52,8 @@ export const GAME_CONFIG = {
     attemptPenalty: 100,     // pts deducted per wrong flip
   },
   hard: {
-    cols:           5,
-    rows:           6,       // 30 cards = 15 pairs
+    cols:           4,
+    rows:           4,       // 16 cards = 8 pairs
     maxAttempts:    10,      // lose after 10 wrong flips
     timeLimitSec:   60,      // lose if 60 seconds elapse
     baseScore:      8000,

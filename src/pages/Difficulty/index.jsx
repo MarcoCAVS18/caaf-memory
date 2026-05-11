@@ -34,7 +34,7 @@ const DIFFICULTIES = [
   },
   {
     level:       'hard',
-    gridSize:    '5×6',
+    gridSize:    '4×4',
     timeKey:     'difficulty.timeLimit60',
     attemptsKey: 'difficulty.attemptsTen',
   },
