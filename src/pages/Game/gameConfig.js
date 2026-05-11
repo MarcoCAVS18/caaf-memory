@@ -58,7 +58,7 @@ export const GAME_CONFIG = {
     cols:           4,
     rows:           4,       // 16 cards = 8 pairs
     maxAttempts:    10,      // lose after 10 wrong flips
-    timeLimitSec:   60,      // lose if 60 seconds elapse
+    timeLimitSec:   40,      // lose if 40 seconds elapse
     baseScore:      8000,
     timePenalty:    10,
     attemptPenalty: 300,

@@ -85,7 +85,7 @@
     "grid": "{{size}} Grid",
     "timeExtensive": "Generous time",
     "timeModerate": "Moderate time",
-    "timeLimit60": "1 minute limit",
+    "timeLimit40": "40 seconds limit",
     "attemptsInfinite": "Unlimited attempts",
     "attemptsTen": "10 attempts",
     "statsWins": "Wins",

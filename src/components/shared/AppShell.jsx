@@ -42,7 +42,7 @@ export function AppShell() {
   }, [needsOnboarding, isLoading])
 
   return (
-    <div className="min-h-screen flex flex-col bg-[var(--color-surface)]">
+    <div className="min-h-dvh flex flex-col bg-[var(--color-surface)]">
       {showLoader && <Loader />}
       <ScrollToTop />
       <TopAppBar />

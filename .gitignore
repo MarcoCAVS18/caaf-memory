@@ -9,6 +9,10 @@ dist/
 .env.local
 .env.*.local
 
+# Firebase service account — NEVER commit
+service-account.json
+*-service-account.json
+
 # Vite cache
 .vite/
 

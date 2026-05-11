@@ -85,7 +85,7 @@
     "grid": "Cuadrícula {{size}}",
     "timeExtensive": "Tiempo generoso",
     "timeModerate": "Tiempo moderado",
-    "timeLimit60": "1 minuto límite",
+    "timeLimit40": "40 segundos límite",
     "attemptsInfinite": "Intentos ilimitados",
     "attemptsTen": "10 intentos",
     "statsWins": "Victorias",
