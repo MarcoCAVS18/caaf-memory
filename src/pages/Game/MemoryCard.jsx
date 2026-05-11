@@ -12,24 +12,15 @@ import { SYMBOL_MAP, GAME_SYMBOLS } from './gameConfig'
 
 const DEFAULT_KEY = GAME_SYMBOLS[0].key
 
-const COLOR_MAP = {
-  primary: {
-    container: 'bg-[var(--color-primary-container)]',
-    ring:      'ring-2 ring-[var(--color-primary)]/60 shadow-[0_0_20px_rgba(187,206,150,0.25)]',
-  },
-  secondary: {
-    container: 'bg-[var(--color-secondary-container)]',
-    ring:      'ring-2 ring-[var(--color-secondary)]/60 shadow-[0_0_20px_rgba(233,193,118,0.25)]',
-  },
-  tertiary: {
-    container: 'bg-[var(--color-tertiary-container)]',
-    ring:      'ring-2 ring-[var(--color-tertiary)]/60',
-  },
+const RING_BY_COLOR = {
+  primary:   'ring-2 ring-[var(--color-primary)]/60 shadow-[0_0_20px_rgba(187,206,150,0.25)]',
+  secondary: 'ring-2 ring-[var(--color-secondary)]/60 shadow-[0_0_20px_rgba(233,193,118,0.25)]',
+  tertiary:  'ring-2 ring-[var(--color-tertiary)]/60',
 }
 
 export function MemoryCard({ state = 'idle', iconKey = DEFAULT_KEY, onClick, disabled }) {
   const symbol     = SYMBOL_MAP[iconKey] ?? SYMBOL_MAP[DEFAULT_KEY]
-  const colors     = COLOR_MAP[symbol.color]
+  const ring       = RING_BY_COLOR[symbol.color]
   const isRevealed = state === 'flipped' || state === 'matched' || state === 'mismatched'
 
   return (
@@ -74,11 +65,11 @@ export function MemoryCard({ state = 'idle', iconKey = DEFAULT_KEY, onClick, dis
           className={[
             'flip-card-face flip-card-back absolute inset-0',
             'rounded-[var(--radius-md)]',
-            'flex items-center justify-center overflow-hidden p-2',
+            'overflow-hidden',
             state === 'mismatched'
-              ? 'bg-[var(--color-error-container)] shadow-[inset_0_0_0_2px_var(--color-error)]'
-              : colors.container,
-            state === 'matched' ? colors.ring : '',
+              ? 'shadow-[inset_0_0_0_2px_var(--color-error)]'
+              : '',
+            state === 'matched' ? ring : '',
             'transition-all duration-300',
           ].join(' ')}
         >
@@ -86,7 +77,10 @@ export function MemoryCard({ state = 'idle', iconKey = DEFAULT_KEY, onClick, dis
             src={symbol.image}
             alt=""
             draggable={false}
-            className="w-full h-full object-contain select-none"
+            className={[
+              'absolute inset-0 w-full h-full object-cover select-none',
+              state === 'mismatched' ? 'opacity-70' : '',
+            ].join(' ')}
           />
         </div>
 

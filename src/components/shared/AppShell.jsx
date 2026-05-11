@@ -8,6 +8,7 @@ import { AchievementToast }   from '../ui/AchievementToast'
 import { useProfile }         from '../../hooks/useProfile'
 import { useImagePreload }    from '../../hooks/useImagePreload'
 import { Loader }             from '../ui/Loader'
+import { GAME_IMAGES }        from '../../pages/Game/gameConfig'
 
 const APP_IMAGES = [
   '/images/hero-wheat-field.png',
@@ -23,6 +24,13 @@ export function AppShell() {
   const prevNeedsOnboarding = useRef(false)
 
   const showLoader = isLoading || imagesLoading
+
+  // Warm the browser cache with game card images once the shell is ready.
+  // Non-blocking so the app boots without waiting for the JPGs.
+  useEffect(() => {
+    if (showLoader) return
+    GAME_IMAGES.forEach((src) => { const img = new Image(); img.src = src })
+  }, [showLoader])
 
   // Scroll to top when onboarding completes (pathname doesn't change, so
   // ScrollToTop won't fire — we detect the true→false transition manually)

@@ -30,6 +30,9 @@ export const GAME_SYMBOLS = [
 /** Fast lookup: key → symbol object */
 export const SYMBOL_MAP = Object.fromEntries(GAME_SYMBOLS.map((s) => [s.key, s]))
 
+/** All game card image URLs — used for preloading. */
+export const GAME_IMAGES = GAME_SYMBOLS.map((s) => s.image)
+
 // ── Difficulty configuration ──────────────────────────────────────────────────
 
 export const GAME_CONFIG = {

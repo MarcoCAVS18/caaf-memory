@@ -2,12 +2,15 @@ import { useEffect }                      from 'react'
 import { useNavigate, useLocation, useBlocker } from 'react-router-dom'
 import { useTranslation }                 from 'react-i18next'
 import { useGameState }                   from '../../hooks/useGameState'
+import { useImagePreload }                from '../../hooks/useImagePreload'
 import { getSavedGame, saveGame, clearSavedGame } from '../../services/savedGameService'
 import { MemoryGrid }   from './MemoryGrid'
+import { GAME_IMAGES }  from './gameConfig'
 import { Text }   from '../../components/ui/Typography'
 import { Card }   from '../../components/ui/Card'
 import { Button } from '../../components/ui/Button'
 import { FadeIn } from '../../components/ui/FadeIn'
+import { Loader } from '../../components/ui/Loader'
 
 function padTime(n) { return String(n).padStart(2, '0') }
 function formatTime(s) { return `${padTime(Math.floor(s / 60))}:${padTime(s % 60)}` }
@@ -60,6 +63,15 @@ function ExitConfirmModal({ onConfirm, onCancel }) {
 
 /* ── Game page ────────────────────────────────────────────────────────────── */
 export default function GamePage() {
+  // Wait for card images to be in the browser cache before starting the game.
+  // AppShell warms the cache in the background, so this resolves instantly on
+  // repeat visits — first-time players see the loader briefly.
+  const imagesLoading = useImagePreload(GAME_IMAGES)
+  if (imagesLoading) return <Loader />
+  return <GamePageInner />
+}
+
+function GamePageInner() {
   const navigate        = useNavigate()
   const { state }       = useLocation()
   const { t }           = useTranslation()
